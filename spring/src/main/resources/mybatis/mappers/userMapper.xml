@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mappers.userMapper"><!--  like package of class -->
+	<!--  no need loop ResultSet -->
+	<resultMap type="userVO" id="userResult">
+		<!-- <result property="username" column="username"/>
+		<result property="password" column="password"/>
+		<result property="email" column="email"/>
+		<result property="roleId" column="roleId"/> -->
+	</resultMap>
+	
+	<!-- make sql statment -->
+	<!-- List<Book> books = selectAll() -->
+	<select id="selectAll" resultMap="userResult"> <!-- mappers.bookMapper.selectAll -->
+		<![CDATA[
+			select * from user order by username desc
+		]]>
+	</select>
+	<!-- Book book = selectOne(id=1) -->
+	<select id="selectOne" resultMap="userResult" parameterType="string">
+		<![CDATA[
+			select * from user
+			where username = #{id}
+		]]>
+	</select>
+	
+	<insert id="insert" parameterType="userVO">
+		<![CDATA[
+			insert into user 
+			(username,password,email,role)
+			values
+			(#{username},#{password},#{email},#{role})			
+		]]>
+	</insert>
+	<update id="update" parameterType="userVO">
+		<![CDATA[
+			update user set
+			    username = #{username},
+			    password = #{password},
+			    email = #{email},
+			    roleId = #{roleId}
+			where username = #{username}
+		]]>
+	</update>
+	<delete id="delete" parameterType="int">
+		<![CDATA[
+			delete from user
+			where username = #{id}
+		]]>
+	</delete>
+</mapper>
