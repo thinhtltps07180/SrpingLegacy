@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import tp.kits3.livedinner.service.UserService;
-import tp.kits3.livedinner.vo.User;
 
 @Controller
 public class AdminController {
@@ -16,9 +15,7 @@ public class AdminController {
 	
 	@GetMapping(value = "/admin")
 	public String home( Model model) {
-		User user = new User("client", "1", "client@gmail.com", 2);
-		service.insert(user);
-		System.out.println(user.getUsername());
-		return "admin";
+
+		return "admin/index";
 	}
 }

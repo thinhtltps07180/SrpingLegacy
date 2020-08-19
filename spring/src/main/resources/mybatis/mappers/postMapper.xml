@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mappers.postMapper"><!-- like package of class -->
+	<!-- no need loop ResultSet -->
+	<resultMap type="postVO" id="postResult">
+		<result property="pid" column="pid" />
+		<result property="title" column="title" />
+		<result property="byname" column="byname" />
+		<result property="regdate" column="regdate" />
+		<result property="content" column="content" />
+		<result property="visible" column="visible" />
+		<result property="tagid" column="tagid" />
+		<result property="img" column="img" />
+	</resultMap>
+
+	<!-- make sql statment -->
+	<!-- List<Book> books = selectAll() -->
+	<select id="selectAll" resultMap="postResult"> <!-- mappers.bookMapper.selectAll -->
+		<![CDATA[
+			select * from post order by pid desc
+		]]>
+	</select>
+	<!-- Book book = selectOne(id=1) -->
+	<select id="selectOne" resultMap="postResult"
+		parameterType="int">
+		<![CDATA[
+			select * from post
+			where pid = #{pid}
+		]]>
+	</select>
+
+	<insert id="insert" parameterType="postVO">
+		<![CDATA[
+			insert into post 
+			(title,byname,regdate,content,visible,tagid,img)
+			values
+			(#{title},#{byname},#{regdate},#{content},#{visible},#{tagid},#{img})			
+		]]>
+	</insert>
+	<update id="update" parameterType="postVO">
+		<![CDATA[
+			update post set
+			    title = #{title},
+			    byname = #{byname},
+			    regdate = #{regdate},
+			    content = #{content},
+			    visible = #{visible},
+			    tagid = #{tagid},
+			    img = #{img}
+			where pid = #{pid}
+		]]>
+	</update>
+	<delete id="delete" parameterType="int">
+		<![CDATA[
+			delete from post
+			where pid = #{pid}
+		]]>
+	</delete>
+</mapper>

@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<!-- tag lib  -->
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<!-- end tag lib  -->
 <%
 	String contextPath = request.getContextPath();// or page Context
 %>
@@ -13,31 +19,29 @@
 <!-- Mobile Metas -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Site Metas -->
-<title>Live Dinner Restaurant - Responsive HTML5 Template</title>
-<meta name="keywords" content="">
-<meta name="description" content="">
-<meta name="author" content="">
 
 <!-- Site Icons -->
-<link rel="shortcut icon" href="<%=contextPath %>/images/favicon.ico" type="image/x-icon">
-<link rel="apple-touch-icon" href="<%=contextPath %>/images/apple-touch-icon.png">
+<link rel="shortcut icon"
+	href="<%=contextPath%>/resources/ClientTemplate/images/favicon.ico"
+	type="image/x-icon">
+<link rel="apple-touch-icon"
+	href="<%=contextPath%>/resources/ClientTemplate/images/apple-touch-icon.png">
 
 <!-- Bootstrap CSS -->
-<link rel="stylesheet" href="<%=contextPath %>/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="<%=contextPath%>/resources/ClientTemplate/css/bootstrap.min.css">
 <!-- Site CSS -->
-<link rel="stylesheet" href="<%=contextPath %>/css/style.css">
+<link rel="stylesheet"
+	href="<%=contextPath%>/resources/ClientTemplate/css/style.css">
 <!-- Responsive CSS -->
-<link rel="stylesheet" href="<%=contextPath %>/css/responsive.css">
+<link rel="stylesheet"
+	href="<%=contextPath%>/resources/ClientTemplate/css/responsive.css">
 <!-- Custom CSS -->
-<link rel="stylesheet" href="<%=contextPath %>/css/custom.css">
+<link rel="stylesheet"
+	href="<%=contextPath%>/resources/ClientTemplate/css/custom.css">
 
-<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
-</head>
+
 
 <body>
 	<!-- Start header -->
@@ -45,7 +49,7 @@
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container">
 				<a class="navbar-brand" href="index.html"> <img
-					src="<%=contextPath %>/images/logo.png" alt="" />
+					src="<%=contextPath%>/resources/ClientTemplate/images/logo.png" alt="" />
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbars-rs-food" aria-controls="navbars-rs-food"
@@ -109,57 +113,26 @@
 					<div class="blog-inner-details-page">
 						<div class="blog-inner-box">
 							<div class="side-blog-img">
-								<img class="img-fluid" src="<%=contextPath %>/images/inner-blog-img.jpg" alt="">
+								<img class="img-fluid"
+									src="<%=contextPath%>/resources/ClientTemplate/images/inner-blog-img.jpg" alt="">
 								<div class="date-blog-up">27 Fab</div>
 							</div>
 							<div class="inner-blog-detail details-page">
-								<h3>Duis feugiat neque sed dolor cursus, sed lacinia nisl
-									pretium.</h3>
+								<h3>${ SinglePost.title }.</h3>
 								<ul>
-									<li><i class="zmdi zmdi-account"></i>Posted By : <span>Rubel
-											Ahmed</span></li>
+									<li><i class="zmdi zmdi-account"></i>Posted By : <span>${ SinglePost.byname }</span></li>
 									<li>|</li>
-									<li><i class="zmdi zmdi-time"></i>Time : <span>11.30
-											am</span></li>
+									<li><i class="zmdi zmdi-time"></i>Time : <span>${ SinglePost.regdate }</span></li>
 								</ul>
-								<p>Vestibulum quis ultricies enim. Quisque eu sapien a erat
-									congue lacinia bibendum ac massa. Morbi vehicula aliquet libero
-									sit amet dictum. Integer vel mauris non magna consequat
-									porttitor. Nulla facilisi. Suspendisse posuere, elit eu
-									fringilla congue, turpis magna tempor odio, a placerat magna
-									tortor a mauris. Phasellus lobortis turpis dui, eget mollis ex
-									vestibulum auctor. Nunc viverra leo ut accumsan aliquet.
-									Maecenas aliquam dolor eget felis bibendum blandit.</p>
-								<p>Nunc iaculis, massa eget pellentesque mollis, nulla
-									mauris aliquam eros, vitae condimentum leo nisl ut purus. Etiam
-									nibh diam, vehicula non tincidunt id, consequat nec ex.
-									Praesent vulputate sapien non tellus ultrices hendrerit.
-									Vestibulum ante ipsum primis in faucibus orci luctus et
-									ultrices posuere cubilia Curae; Vivamus pellentesque arcu erat.
-									Curabitur dapibus fringilla porta. Sed in neque sit amet ante
-									feugiat blandit. Nulla fringilla purus diam, cursus venenatis
-									diam luctus nec.</p>
-								<blockquote>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-										Sed non feugiat lacus. Nunc nisi velit, consectetur vitae ex
-										porttitor, placerat scelerisque mauris. Phasellus sit amet
-										tincidunt metus, quis tempus ex. Quisque in lorem ut mi
-										ullamcorper suscipit eu nec purus. Nam maximus sagittis
-										iaculis.</p>
+								${ SinglePost.content }
 								</blockquote>
-								<p>Vestibulum quis ultricies enim. Quisque eu sapien a erat
-									congue lacinia bibendum ac massa. Morbi vehicula aliquet libero
-									sit amet dictum. Integer vel mauris non magna consequat
-									porttitor. Nulla facilisi. Suspendisse posuere, elit eu
-									fringilla congue, turpis magna tempor odio, a placerat magna
-									tortor a mauris.</p>
 							</div>
 						</div>
 						<div class="blog-comment-box">
 							<h3>Comments</h3>
 							<div class="comment-item">
 								<div class="comment-item-left">
-									<img src="<%=contextPath %>/images/avt-img.jpg" alt="">
+									<img src="<%=contextPath%>/resources/ClientTemplate/images/avt-img.jpg" alt="">
 								</div>
 								<div class="comment-item-right">
 									<div class="pull-left">
@@ -180,7 +153,7 @@
 							</div>
 							<div class="comment-item children">
 								<div class="comment-item-left">
-									<img src="<%=contextPath %>/images/avt-img.jpg" alt="">
+									<img src="<%=contextPath%>/resources/ClientTemplate/images/avt-img.jpg" alt="">
 								</div>
 								<div class="comment-item-right">
 									<div class="pull-left">
@@ -201,7 +174,7 @@
 							</div>
 							<div class="comment-item">
 								<div class="comment-item-left">
-									<img src="<%=contextPath %>/images/avt-img.jpg" alt="">
+									<img src="<%=contextPath%>/resources/ClientTemplate/images/avt-img.jpg" alt="">
 								</div>
 								<div class="comment-item-right">
 									<div class="pull-left">
@@ -276,7 +249,8 @@
 							<div class="recent-post-box">
 								<div class="recent-box-blog">
 									<div class="recent-img">
-										<img class="img-fluid" src="<%=contextPath %>/images/post-img-01.jpg" alt="">
+										<img class="img-fluid"
+											src="<%=contextPath%>/resources/ClientTemplate/images/post-img-01.jpg" alt="">
 									</div>
 									<div class="recent-info">
 										<ul>
@@ -292,7 +266,8 @@
 								</div>
 								<div class="recent-box-blog">
 									<div class="recent-img">
-										<img class="img-fluid" src="<%=contextPath %>/images/post-img-02.jpg" alt="">
+										<img class="img-fluid"
+											src="<%=contextPath%>/resources/ClientTemplate/images/post-img-02.jpg" alt="">
 									</div>
 									<div class="recent-info">
 										<ul>
@@ -308,7 +283,8 @@
 								</div>
 								<div class="recent-box-blog">
 									<div class="recent-img">
-										<img class="img-fluid" src="<%=contextPath %>/images/post-img-03.jpg" alt="">
+										<img class="img-fluid"
+											src="<%=contextPath%>/resources/ClientTemplate/images/post-img-03.jpg" alt="">
 									</div>
 									<div class="recent-info">
 										<ul>
@@ -324,7 +300,8 @@
 								</div>
 								<div class="recent-box-blog">
 									<div class="recent-img">
-										<img class="img-fluid" src="<%=contextPath %>/images/post-img-01.jpg" alt="">
+										<img class="img-fluid"
+											src="<%=contextPath%>/resources/ClientTemplate/images/post-img-01.jpg" alt="">
 									</div>
 									<div class="recent-info">
 										<ul>
@@ -469,19 +446,25 @@
 
 	<a href="#" id="back-to-top" title="Back to top" style="display: none;"><i
 		class="fa fa-paper-plane-o" aria-hidden="true"></i></a>
-
 	<!-- ALL JS FILES -->
-	<script src="js/jquery-3.2.1.min.js"></script>
+	<script
+		src="<%=contextPath%>/resources/ClientTemplate/js/jquery-3.2.1.min.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<!-- ALL PLUGINS -->
 
-	<script src="js/jquery.superslides.min.js"></script>
-	<script src="js/<%=contextPath %>/images-loded.min.js"></script>
-	<script src="js/isotope.min.js"></script>
-	<script src="js/baguetteBox.min.js"></script>
-	<script src="js/form-validator.min.js"></script>
-	<script src="js/contact-form-script.js"></script>
-	<script src="js/custom.js"></script>
+	<script
+		src="<%=contextPath%>/resources/ClientTemplate/js/jquery.superslides.min.js"></script>
+	<script
+		src="<%=contextPath%>/resources/ClientTemplate/js/images-loded.min.js"></script>
+	<script
+		src="<%=contextPath%>/resources/ClientTemplate/js/isotope.min.js"></script>
+	<script
+		src="<%=contextPath%>/resources/ClientTemplate/js/baguetteBox.min.js"></script>
+	<script
+		src="<%=contextPath%>/resources/ClientTemplate/js/form-validator.min.js"></script>
+	<script
+		src="<%=contextPath%>/resources/ClientTemplate/js/contact-form-script.js"></script>
+	<script src="<%=contextPath%>/resources/ClientTemplate/js/custom.js"></script>
 </body>
 </html>

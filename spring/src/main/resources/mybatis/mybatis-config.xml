@@ -7,9 +7,12 @@
 	<typeAliases>
 		<typeAlias type="tp.kits3.livedinner.vo.Book" alias="bookVO" />
 		<typeAlias type="tp.kits3.livedinner.vo.User" alias="userVO" />
+		<typeAlias type="tp.kits3.livedinner.vo.Role" alias="roleVO" />
+		<typeAlias type="tp.kits3.livedinner.vo.Tag" alias="tagVO" />
+		<typeAlias type="tp.kits3.livedinner.vo.Post" alias="postVO" />
 	</typeAliases>
 
-	
+
 	<!-- 2. config DB connection info like tomcat context.xml DataSource -->
 	<environments default="development">
 		<environment id="development">
@@ -28,6 +31,9 @@
 		<!-- from /src/main/java/ -->
 		<mapper resource="mybatis/mappers/bookMapper.xml" />
 		<mapper resource="mybatis/mappers/userMapper.xml" />
+		<mapper resource="mybatis/mappers/roleMapper.xml" />
+		<mapper resource="mybatis/mappers/tagMapper.xml" />
+		<mapper resource="mybatis/mappers/postMapper.xml" />
 	</mappers>
 
 </configuration>

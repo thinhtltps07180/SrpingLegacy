@@ -11,30 +11,30 @@ import tp.kits3.livedinner.vo.User;
 @Service
 public class UserService {
 
-	private IUser userDto;
+	private IUser userImpl;
 
 	public UserService() {
-		userDto = new UserImpl();
+		userImpl = new UserImpl();
 	}
 
 	public List<User> findAll() {
-		return userDto.selectAll();
+		return userImpl.selectAll();
 	}
 
 	public User selectOne(String userName) {
-		return userDto.selectOne(userName);
+		return userImpl.selectOne(userName);
 	}
 
 	public void insert(User user) {
-		userDto.insert(user);
+		userImpl.insert(user);
 	}
 
 	public void update(User user) {
-		userDto.update(user);
+		userImpl.update(user);
 	}
 
 	public void delete(int id) {
-		userDto.delete(id);
+		userImpl.delete(id);
 	}
 
 }

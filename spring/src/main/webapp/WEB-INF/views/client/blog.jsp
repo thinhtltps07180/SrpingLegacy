@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<!-- tag lib  -->
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<!-- end tag lib  -->
 <%
 	String contextPath = request.getContextPath();// or page Context
 %>
@@ -19,18 +25,29 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
+
 <!-- Site Icons -->
-<link rel="shortcut icon" href="<%=contextPath %>/images/favicon.ico" type="image/x-icon">
-<link rel="apple-touch-icon" href="<%=contextPath %>/images/apple-touch-icon.png">
+<link rel="shortcut icon"
+	href="<%=contextPath%>/resources/ClientTemplate/images/favicon.ico"
+	type="image/x-icon">
+<link rel="apple-touch-icon"
+	href="<%=contextPath%>/resources/ClientTemplate/images/apple-touch-icon.png">
 
 <!-- Bootstrap CSS -->
-<link rel="stylesheet" href="<%=contextPath %>/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="<%=contextPath%>/resources/ClientTemplate/css/bootstrap.min.css">
 <!-- Site CSS -->
-<link rel="stylesheet" href="<%=contextPath %>/css/style.css">
+<link rel="stylesheet"
+	href="<%=contextPath%>/resources/ClientTemplate/css/style.css">
 <!-- Responsive CSS -->
-<link rel="stylesheet" href="<%=contextPath %>/css/responsive.css">
+<link rel="stylesheet"
+	href="<%=contextPath%>/resources/ClientTemplate/css/responsive.css">
 <!-- Custom CSS -->
-<link rel="stylesheet" href="<%=contextPath %>/css/custom.css">
+<link rel="stylesheet"
+	href="<%=contextPath%>/resources/ClientTemplate/css/custom.css">
+
+
+
 
 <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -45,7 +62,7 @@
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 			<div class="container">
 				<a class="navbar-brand" href="index.html"> <img
-					src="<%=contextPath %>/images/logo.png" alt="" />
+					src="resources/ClientTemplate/images/logo.png" alt="" />
 				</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbars-rs-food" aria-controls="navbars-rs-food"
@@ -105,341 +122,173 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-lg-4 col-md-6 col-12">
-					<div class="blog-box-inner">
-						<div class="blog-img-box">
-							<img class="img-fluid" src="<%=contextPath %>/images/blog-img-01.jpg" alt="">
-						</div>
-						<div class="blog-detail">
-							<h4>Duis feugiat neque sed dolor cursus.</h4>
-							<ul>
-								<li><span>Post by Admin</span></li>
-								<li>|</li>
-								<li><span>27 February 2018</span></li>
-							</ul>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+				<c:forEach var="post" items="${ListPost}">
+					<div class="col-lg-4 col-md-6 col-12">
+						<div class="blog-box-inner">
+							<div class="blog-img-box">
+								<img class="img-fluid"
+									src="resources/ClientTemplate/images/blog-img-01.jpg" alt="">
+							</div>
+							<div class="blog-detail">
+								<h4>${post.title}.</h4>
+								<ul>
+									<li><span>Post by ${post.byname}</span></li>
+									<li>|</li>
+									<li><span>${post.regdate}</span></li>
+								</ul>
+								<!-- 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 								Pellentesque auctor suscipit feugiat. Ut at pellentesque ante,
 								sed convallis arcu. Nullam facilisis, eros in eleifend luctus,
 								odio ante sodales augue, eget lacinia lectus erat et sem.</p>
 							<p>Sed semper orci sit amet porta placerat. Etiam quis
-								finibus eros.</p>
-							<a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Read
-								More</a>
+								finibus eros.</p> -->
+								${post.content} <a
+									class="btn btn-lg btn-circle btn-outline-new-white"
+									href="blog/${post.pid}">Read More</a> <a
+									class="btn btn-lg btn-circle btn-outline-new-white"
+									href="blog/update/${post.pid}">Edit</a>
+
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 col-12">
-					<div class="blog-box-inner">
-						<div class="blog-img-box">
-							<img class="img-fluid" src="<%=contextPath %>/images/blog-img-02.jpg" alt="">
-						</div>
-						<div class="blog-detail">
-							<h4>Duis feugiat neque sed dolor cursus.</h4>
-							<ul>
-								<li><span>Post by Admin</span></li>
-								<li>|</li>
-								<li><span>27 February 2018</span></li>
-							</ul>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								Pellentesque auctor suscipit feugiat. Ut at pellentesque ante,
-								sed convallis arcu. Nullam facilisis, eros in eleifend luctus,
-								odio ante sodales augue, eget lacinia lectus erat et sem.</p>
-							<p>Sed semper orci sit amet porta placerat. Etiam quis
-								finibus eros.</p>
-							<a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Read
-								More</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 col-12">
-					<div class="blog-box-inner">
-						<div class="blog-img-box">
-							<img class="img-fluid" src="<%=contextPath %>/images/blog-img-03.jpg" alt="">
-						</div>
-						<div class="blog-detail">
-							<h4>Duis feugiat neque sed dolor cursus.</h4>
-							<ul>
-								<li><span>Post by Admin</span></li>
-								<li>|</li>
-								<li><span>27 February 2018</span></li>
-							</ul>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								Pellentesque auctor suscipit feugiat. Ut at pellentesque ante,
-								sed convallis arcu. Nullam facilisis, eros in eleifend luctus,
-								odio ante sodales augue, eget lacinia lectus erat et sem.</p>
-							<p>Sed semper orci sit amet porta placerat. Etiam quis
-								finibus eros.</p>
-							<a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Read
-								More</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 col-12">
-					<div class="blog-box-inner">
-						<div class="blog-img-box">
-							<img class="img-fluid" src="<%=contextPath %>/images/blog-img-04.jpg" alt="">
-						</div>
-						<div class="blog-detail">
-							<h4>Duis feugiat neque sed dolor cursus.</h4>
-							<ul>
-								<li><span>Post by Admin</span></li>
-								<li>|</li>
-								<li><span>27 February 2018</span></li>
-							</ul>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								Pellentesque auctor suscipit feugiat. Ut at pellentesque ante,
-								sed convallis arcu. Nullam facilisis, eros in eleifend luctus,
-								odio ante sodales augue, eget lacinia lectus erat et sem.</p>
-							<p>Sed semper orci sit amet porta placerat. Etiam quis
-								finibus eros.</p>
-							<a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Read
-								More</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 col-12">
-					<div class="blog-box-inner">
-						<div class="blog-img-box">
-							<img class="img-fluid" src="<%=contextPath %>/images/blog-img-05.jpg" alt="">
-						</div>
-						<div class="blog-detail">
-							<h4>Duis feugiat neque sed dolor cursus.</h4>
-							<ul>
-								<li><span>Post by Admin</span></li>
-								<li>|</li>
-								<li><span>27 February 2018</span></li>
-							</ul>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								Pellentesque auctor suscipit feugiat. Ut at pellentesque ante,
-								sed convallis arcu. Nullam facilisis, eros in eleifend luctus,
-								odio ante sodales augue, eget lacinia lectus erat et sem.</p>
-							<p>Sed semper orci sit amet porta placerat. Etiam quis
-								finibus eros.</p>
-							<a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Read
-								More</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 col-12">
-					<div class="blog-box-inner">
-						<div class="blog-img-box">
-							<img class="img-fluid" src="<%=contextPath %>/images/blog-img-06.jpg" alt="">
-						</div>
-						<div class="blog-detail">
-							<h4>Duis feugiat neque sed dolor cursus.</h4>
-							<ul>
-								<li><span>Post by Admin</span></li>
-								<li>|</li>
-								<li><span>27 February 2018</span></li>
-							</ul>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								Pellentesque auctor suscipit feugiat. Ut at pellentesque ante,
-								sed convallis arcu. Nullam facilisis, eros in eleifend luctus,
-								odio ante sodales augue, eget lacinia lectus erat et sem.</p>
-							<p>Sed semper orci sit amet porta placerat. Etiam quis
-								finibus eros.</p>
-							<a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Read
-								More</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 col-12">
-					<div class="blog-box-inner">
-						<div class="blog-img-box">
-							<img class="img-fluid" src="<%=contextPath %>/images/blog-img-07.jpg" alt="">
-						</div>
-						<div class="blog-detail">
-							<h4>Duis feugiat neque sed dolor cursus.</h4>
-							<ul>
-								<li><span>Post by Admin</span></li>
-								<li>|</li>
-								<li><span>27 February 2018</span></li>
-							</ul>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								Pellentesque auctor suscipit feugiat. Ut at pellentesque ante,
-								sed convallis arcu. Nullam facilisis, eros in eleifend luctus,
-								odio ante sodales augue, eget lacinia lectus erat et sem.</p>
-							<p>Sed semper orci sit amet porta placerat. Etiam quis
-								finibus eros.</p>
-							<a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Read
-								More</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 col-12">
-					<div class="blog-box-inner">
-						<div class="blog-img-box">
-							<img class="img-fluid" src="<%=contextPath %>/images/blog-img-08.jpg" alt="">
-						</div>
-						<div class="blog-detail">
-							<h4>Duis feugiat neque sed dolor cursus.</h4>
-							<ul>
-								<li><span>Post by Admin</span></li>
-								<li>|</li>
-								<li><span>27 February 2018</span></li>
-							</ul>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								Pellentesque auctor suscipit feugiat. Ut at pellentesque ante,
-								sed convallis arcu. Nullam facilisis, eros in eleifend luctus,
-								odio ante sodales augue, eget lacinia lectus erat et sem.</p>
-							<p>Sed semper orci sit amet porta placerat. Etiam quis
-								finibus eros.</p>
-							<a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Read
-								More</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 col-12">
-					<div class="blog-box-inner">
-						<div class="blog-img-box">
-							<img class="img-fluid" src="<%=contextPath %>/images/blog-img-09.jpg" alt="">
-						</div>
-						<div class="blog-detail">
-							<h4>Duis feugiat neque sed dolor cursus.</h4>
-							<ul>
-								<li><span>Post by Admin</span></li>
-								<li>|</li>
-								<li><span>27 February 2018</span></li>
-							</ul>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								Pellentesque auctor suscipit feugiat. Ut at pellentesque ante,
-								sed convallis arcu. Nullam facilisis, eros in eleifend luctus,
-								odio ante sodales augue, eget lacinia lectus erat et sem.</p>
-							<p>Sed semper orci sit amet porta placerat. Etiam quis
-								finibus eros.</p>
-							<a class="btn btn-lg btn-circle btn-outline-new-white" href="#">Read
-								More</a>
-						</div>
-					</div>
-				</div>
+				</c:forEach>
 			</div>
 		</div>
-	</div>
-	<!-- End blog -->
+		<!-- End blog -->
 
-	<!-- Start Contact info -->
-	<div class="contact-imfo-box">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-4 arrow-right">
-					<i class="fa fa-volume-control-phone"></i>
-					<div class="overflow-hidden">
-						<h4>Phone</h4>
-						<p class="lead">+01 123-456-4590</p>
-					</div>
-				</div>
-				<div class="col-md-4 arrow-right">
-					<i class="fa fa-envelope"></i>
-					<div class="overflow-hidden">
-						<h4>Email</h4>
-						<p class="lead">yourmail@gmail.com</p>
-					</div>
-				</div>
-				<div class="col-md-4">
-					<i class="fa fa-map-marker"></i>
-					<div class="overflow-hidden">
-						<h4>Location</h4>
-						<p class="lead">800, Lorem Street, US</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- End Contact info -->
-
-	<!-- Start Footer -->
-	<footer class="footer-area bg-f">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-3 col-md-6">
-					<h3>About Us</h3>
-					<p>Integer cursus scelerisque ipsum id efficitur. Donec a dui
-						fringilla, gravida lorem ac, semper magna. Aenean rhoncus ac
-						lectus a interdum. Vivamus semper posuere dui.</p>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<h3>Subscribe</h3>
-					<div class="subscribe_form">
-						<form class="subscribe_form">
-							<input name="EMAIL" id="subs-email" class="form_input"
-								placeholder="Email Address..." type="email">
-							<button type="submit" class="submit">SUBSCRIBE</button>
-							<div class="clearfix"></div>
-						</form>
-					</div>
-					<ul class="list-inline f-social">
-						<li class="list-inline-item"><a href="#"><i
-								class="fa fa-facebook" aria-hidden="true"></i></a></li>
-						<li class="list-inline-item"><a href="#"><i
-								class="fa fa-twitter" aria-hidden="true"></i></a></li>
-						<li class="list-inline-item"><a href="#"><i
-								class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-						<li class="list-inline-item"><a href="#"><i
-								class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-						<li class="list-inline-item"><a href="#"><i
-								class="fa fa-instagram" aria-hidden="true"></i></a></li>
-					</ul>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<h3>Contact information</h3>
-					<p class="lead">Ipsum Street, Lorem Tower, MO, Columbia, 508000</p>
-					<p class="lead">
-						<a href="#">+01 2000 800 9999</a>
-					</p>
-					<p>
-						<a href="#"> info@admin.com</a>
-					</p>
-				</div>
-				<div class="col-lg-3 col-md-6">
-					<h3>Opening hours</h3>
-					<p>
-						<span class="text-color">Monday: </span>Closed
-					</p>
-					<p>
-						<span class="text-color">Tue-Wed :</span> 9:Am - 10PM
-					</p>
-					<p>
-						<span class="text-color">Thu-Fri :</span> 9:Am - 10PM
-					</p>
-					<p>
-						<span class="text-color">Sat-Sun :</span> 5:PM - 10PM
-					</p>
-				</div>
-			</div>
-		</div>
-
-		<div class="copyright">
+		<!-- Start Contact info -->
+		<div class="contact-imfo-box">
 			<div class="container">
 				<div class="row">
-					<div class="col-lg-12">
-						<p class="company-name">
-							All Rights Reserved. &copy; 2018 <a href="#">Live Dinner
-								Restaurant</a> Design By : <a href="https://html.design/">html
-								design</a>
+					<div class="col-md-4 arrow-right">
+						<i class="fa fa-volume-control-phone"></i>
+						<div class="overflow-hidden">
+							<h4>Phone</h4>
+							<p class="lead">+01 123-456-4590</p>
+						</div>
+					</div>
+					<div class="col-md-4 arrow-right">
+						<i class="fa fa-envelope"></i>
+						<div class="overflow-hidden">
+							<h4>Email</h4>
+							<p class="lead">yourmail@gmail.com</p>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<i class="fa fa-map-marker"></i>
+						<div class="overflow-hidden">
+							<h4>Location</h4>
+							<p class="lead">800, Lorem Street, US</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Contact info -->
+
+		<!-- Start Footer -->
+		<footer class="footer-area bg-f">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-3 col-md-6">
+						<h3>About Us</h3>
+						<p>Integer cursus scelerisque ipsum id efficitur. Donec a dui
+							fringilla, gravida lorem ac, semper magna. Aenean rhoncus ac
+							lectus a interdum. Vivamus semper posuere dui.</p>
+					</div>
+					<div class="col-lg-3 col-md-6">
+						<h3>Subscribe</h3>
+						<div class="subscribe_form">
+							<form class="subscribe_form">
+								<input name="EMAIL" id="subs-email" class="form_input"
+									placeholder="Email Address..." type="email">
+								<button type="submit" class="submit">SUBSCRIBE</button>
+								<div class="clearfix"></div>
+							</form>
+						</div>
+						<ul class="list-inline f-social">
+							<li class="list-inline-item"><a href="#"><i
+									class="fa fa-facebook" aria-hidden="true"></i></a></li>
+							<li class="list-inline-item"><a href="#"><i
+									class="fa fa-twitter" aria-hidden="true"></i></a></li>
+							<li class="list-inline-item"><a href="#"><i
+									class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+							<li class="list-inline-item"><a href="#"><i
+									class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+							<li class="list-inline-item"><a href="#"><i
+									class="fa fa-instagram" aria-hidden="true"></i></a></li>
+						</ul>
+					</div>
+					<div class="col-lg-3 col-md-6">
+						<h3>Contact information</h3>
+						<p class="lead">Ipsum Street, Lorem Tower, MO, Columbia,
+							508000</p>
+						<p class="lead">
+							<a href="#">+01 2000 800 9999</a>
+						</p>
+						<p>
+							<a href="#"> info@admin.com</a>
+						</p>
+					</div>
+					<div class="col-lg-3 col-md-6">
+						<h3>Opening hours</h3>
+						<p>
+							<span class="text-color">Monday: </span>Closed
+						</p>
+						<p>
+							<span class="text-color">Tue-Wed :</span> 9:Am - 10PM
+						</p>
+						<p>
+							<span class="text-color">Thu-Fri :</span> 9:Am - 10PM
+						</p>
+						<p>
+							<span class="text-color">Sat-Sun :</span> 5:PM - 10PM
 						</p>
 					</div>
 				</div>
 			</div>
-		</div>
 
-	</footer>
-	<!-- End Footer -->
+			<div class="copyright">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-12">
+							<p class="company-name">
+								All Rights Reserved. &copy; 2018 <a href="#">Live Dinner
+									Restaurant</a> Design By : <a href="https://html.design/">html
+									design</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
 
-	<a href="#" id="back-to-top" title="Back to top" style="display: none;"><i
-		class="fa fa-paper-plane-o" aria-hidden="true"></i></a>
+		</footer>
+		<!-- End Footer -->
 
-	<!-- ALL JS FILES -->
-	<script src="js/jquery-3.2.1.min.js"></script>
-	<script src="js/popper.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<!-- ALL PLUGINS -->
+		<a href="#" id="back-to-top" title="Back to top"
+			style="display: none;"><i class="fa fa-paper-plane-o"
+			aria-hidden="true"></i></a>
 
-	<script src="js/jquery.superslides.min.js"></script>
-	<script src="js/<%=contextPath %>/images-loded.min.js"></script>
-	<script src="js/isotope.min.js"></script>
-	<script src="js/baguetteBox.min.js"></script>
-	<script src="js/form-validator.min.js"></script>
-	<script src="js/contact-form-script.js"></script>
-	<script src="js/custom.js"></script>
+
+		<!-- ALL JS FILES -->
+		<script
+			src="<%=contextPath%>/resources/ClientTemplate/js/jquery-3.2.1.min.js"></script>
+		<script src="js/popper.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<!-- ALL PLUGINS -->
+
+		<script
+			src="<%=contextPath%>/resources/ClientTemplate/js/jquery.superslides.min.js"></script>
+		<script
+			src="<%=contextPath%>/resources/ClientTemplate/js/images-loded.min.js"></script>
+		<script
+			src="<%=contextPath%>/resources/ClientTemplate/js/isotope.min.js"></script>
+		<script
+			src="<%=contextPath%>/resources/ClientTemplate/js/baguetteBox.min.js"></script>
+		<script
+			src="<%=contextPath%>/resources/ClientTemplate/js/form-validator.min.js"></script>
+		<script
+			src="<%=contextPath%>/resources/ClientTemplate/js/contact-form-script.js"></script>
+		<script src="<%=contextPath%>/resources/ClientTemplate/js/custom.js"></script>
 </body>
 </html>

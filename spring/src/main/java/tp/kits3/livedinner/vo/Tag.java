@@ -22,7 +22,13 @@ public class Tag {
         this.tgname = tgname;
     }
 
-    // Tag 모델 복사
+    public Tag(Integer tagid, String tgname) {
+		super();
+		this.tagid = tagid;
+		this.tgname = tgname;
+	}
+
+	// Tag 모델 복사
     public void CopyData(Tag param)
     {
         this.tagid = param.getTagid();

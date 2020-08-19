@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="mappers.roleMapper"><!--  like package of class -->
+	<!--  no need loop ResultSet -->
+	<resultMap type="roleVO" id="roleResult">
+		<result property="id" column="id"/>
+		<result property="name" column="name"/>
+	</resultMap>
+	
+	<!-- make sql statment -->
+	<!-- List<Book> books = selectAll() -->
+	<select id="selectAll" resultMap="roleResult"> <!-- mappers.bookMapper.selectAll -->
+		<![CDATA[
+			select * from role order by rolename desc
+		]]>
+	</select>
+	<!-- Book book = selectOne(id=1) -->
+	<select id="selectOne" resultMap="roleResult" parameterType="int">
+		<![CDATA[
+			select * from role
+			where id = #{id}
+		]]>
+	</select>
+	
+	<insert id="insert" parameterType="roleVO">
+		<![CDATA[
+			insert into role 
+			(id,name)
+			values
+			(#{id},#{name})			
+		]]>
+	</insert>
+	<update id="update" parameterType="roleVO">
+		<![CDATA[
+			update role set
+			    id = #{id},
+			    name = #{name},
+			where id = #{id}
+		]]>
+	</update>
+	<delete id="delete" parameterType="int">
+		<![CDATA[
+			delete from role
+			where id = #{id}
+		]]>
+	</delete>
+</mapper>

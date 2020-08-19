@@ -22,7 +22,5 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="tp.kits3.livedinner" />
-	
-	
-	
+
 </beans:beans>
